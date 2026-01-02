@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capture Grid - Neon Edition</title>
+    <title>Capture Grid - Multiplayer Chat</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -16,7 +16,7 @@
             
             <div id="lobby-menu">
                 <input type="text" id="roomInput" placeholder="Nom du salon...">
-                <button class="neon-button" onclick="joinRoom()">REJOINDRE LE DUEL</button>
+                <button class="neon-button" onclick="joinRoom()">REJOINDRE</button>
             </div>
 
             <div id="score-board" class="hidden">
@@ -27,8 +27,16 @@
             <div id="game-status">Prêt pour le combat ?</div>
             
             <div id="grid" class="hidden"></div>
+
+            <div id="chat-container" class="hidden">
+                <div id="chat-messages"></div>
+                <div class="chat-input-area">
+                    <input type="text" id="chatInput" placeholder="Message...">
+                    <button onclick="sendMessage()" class="neon-button" style="padding:5px 10px;">OK</button>
+                </div>
+            </div>
             
-            <button id="resetBtn" class="neon-button hidden" onclick="location.reload()" style="margin-top: 20px;">NOUVELLE PARTIE</button>
+            <button id="resetBtn" class="neon-button hidden" onclick="location.reload()" style="margin-top:20px;">REJOUER</button>
         </main>
 
         <aside class="ad-side"><div class="ad-placeholder">PUB DROITE</div></aside>
