@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capture Grid - Neon Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-container">
+        <aside class="ad-side"><div class="ad-placeholder">PUB GAUCHE</div></aside>
+
+        <main class="game-area">
+            <h1>CAPTURE GRID</h1>
+            
+            <div id="lobby-menu">
+                <input type="text" id="roomInput" placeholder="Nom du salon...">
+                <button class="neon-button" onclick="joinRoom()">REJOINDRE LE DUEL</button>
+            </div>
+
+            <div id="score-board" class="hidden">
+                <span id="p1-label" style="color:var(--playerX)">X: 0</span> — 
+                <span id="p2-label" style="color:var(--playerO)">O: 0</span>
+            </div>
+
+            <div id="game-status">Prêt pour le combat ?</div>
+            
+            <div id="grid" class="hidden"></div>
+            
+            <button id="resetBtn" class="neon-button hidden" onclick="location.reload()" style="margin-top: 20px;">NOUVELLE PARTIE</button>
+        </main>
+
+        <aside class="ad-side"><div class="ad-placeholder">PUB DROITE</div></aside>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
