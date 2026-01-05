@@ -3,70 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capture Grid - Evolution</title>
+    <title>Capture Grid - Ultimate</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6856087924665425" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <div class="app-layout">
+        
         <aside class="ad-sidebar left">
             <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6856087924665425" data-ad-slot="default" data-ad-format="auto"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </aside>
 
-        <main class="game-container">
+        <main class="main-content">
+            
             <header>
                 <h1>CAPTURE <span class="neon-text">GRID</span></h1>
-                <div id="player-rank" class="rank-badge">Niveau 1 (0 XP)</div>
+                <div class="xp-container">
+                    <div id="player-title">JOUEUR</div>
+                    <div class="xp-bar-bg"><div id="xp-bar-fill"></div></div>
+                    <div id="xp-text">Niveau 1 • 0 XP</div>
+                </div>
             </header>
 
-            <div id="lobby-menu" class="glass-panel">
-                <h2>ARÈNE MULTIJOUEUR</h2>
+            <div id="lobby-screen" class="glass-panel">
+                <h2>REJOINDRE L'ARÈNE</h2>
                 <div class="input-group">
-                    <input type="text" id="usernameInput" placeholder="Ton Pseudo..." maxlength="12">
-                    <input type="text" id="roomInput" placeholder="Nom du Salon...">
+                    <label>TON PSEUDO</label>
+                    <input type="text" id="usernameInput" placeholder="Ex: Neo" maxlength="10">
                 </div>
-                <button class="btn-primary" onclick="joinRoom()">ENTRER DANS L'ARÈNE</button>
+                <div class="input-group">
+                    <label>NOM DU SALON</label>
+                    <input type="text" id="roomInput" placeholder="Ex: Salon1">
+                </div>
+                <button class="btn-start" onclick="joinRoom()">COMBATTRE ➤</button>
+                <div id="lobby-status"></div>
             </div>
 
-            <div id="game-active" class="hidden">
-                <div id="score-board" class="glass-panel">
-                    <div class="player-stat p1">
-                        <span id="p1-name">Joueur 1</span>
-                        <div class="score-val" id="p1-score">X: 0</div>
+            <div id="game-interface" class="hidden">
+                
+                <div class="score-board glass-panel">
+                    <div class="p-score p1">
+                        <span id="p1-name">J1</span>
+                        <strong id="p1-score">0</strong>
                     </div>
-                    <div class="vs-divider">VS</div>
-                    <div class="player-stat p2">
-                        <span id="p2-name">Joueur 2</span>
-                        <div class="score-val" id="p2-score">O: 0</div>
+                    <div class="vs">VS</div>
+                    <div class="p-score p2">
+                        <span id="p2-name">J2</span>
+                        <strong id="p2-score">0</strong>
                     </div>
                 </div>
 
-                <div id="game-status">Prêt au combat ?</div>
+                <div id="game-message">En attente...</div>
+
                 <div id="grid"></div>
 
-                <div id="chat-box" class="glass-panel">
-                    <div id="chat-messages"></div>
-                    <div class="chat-input-row">
+                <div class="chat-box glass-panel">
+                    <div id="chat-history"></div>
+                    <div class="chat-controls">
                         <input type="text" id="chatInput" placeholder="Message...">
-                        <button onclick="sendMessage()">➤</button>
+                        <button onclick="sendMessage()">Envoyer</button>
                     </div>
                 </div>
-                
-                <button id="resetBtn" class="btn-primary hidden" onclick="location.reload()">REJOUER</button>
+
+                <button id="resetBtn" class="btn-reset hidden" onclick="location.reload()">NOUVELLE PARTIE</button>
             </div>
 
-            <div class="ad-mobile-bottom">
+            <div class="ad-mobile">
                 <ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-6856087924665425" data-ad-slot="3061830843"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
+
         </main>
 
         <aside class="ad-sidebar right">
             <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6856087924665425" data-ad-slot="default" data-ad-format="auto"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </aside>
+
     </div>
 
     <script src="/socket.io/socket.io.js"></script>
