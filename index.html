@@ -3,28 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capture Grid - Ultimate</title>
+    <title>Capture Grid - Neon Edition</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6856087924665425" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <div class="app-layout">
-        
         <aside class="ad-sidebar left">
             <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6856087924665425" data-ad-slot="default" data-ad-format="auto"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </aside>
 
         <main class="main-content">
-            
             <header>
                 <h1>CAPTURE <span class="neon-text">GRID</span></h1>
                 <div class="xp-container">
-                    <div id="player-title">JOUEUR</div>
+                    <div id="player-title">RECRUE</div>
                     <div class="xp-bar-bg"><div id="xp-bar-fill"></div></div>
-                    <div id="xp-text">Niveau 1 • 0 XP</div>
+                    <div id="xp-text">0 XP Total</div>
                 </div>
             </header>
 
@@ -43,48 +40,41 @@
             </div>
 
             <div id="game-interface" class="hidden">
-                
                 <div class="score-board glass-panel">
-                    <div class="p-score p1">
-                        <span id="p1-name">J1</span>
+                    <div class="p-score p1" id="box-p1">
+                        <span id="p1-name">J1 (X)</span>
                         <strong id="p1-score">0</strong>
                     </div>
                     <div class="vs">VS</div>
-                    <div class="p-score p2">
-                        <span id="p2-name">J2</span>
+                    <div class="p-score p2" id="box-p2">
+                        <span id="p2-name">J2 (O)</span>
                         <strong id="p2-score">0</strong>
                     </div>
                 </div>
 
                 <div id="game-message">En attente...</div>
 
-                <div id="grid"></div>
+                <div class="game-row">
+                    <div id="grid"></div>
 
-                <div class="chat-box glass-panel">
-                    <div id="chat-history"></div>
-                    <div class="chat-controls">
-                        <input type="text" id="chatInput" placeholder="Message...">
-                        <button onclick="sendMessage()">Envoyer</button>
+                    <div class="chat-box glass-panel">
+                        <div id="chat-history"></div>
+                        <div class="chat-controls">
+                            <input type="text" id="chatInput" placeholder="Message...">
+                            <button onclick="sendMessage()">➤</button>
+                        </div>
                     </div>
                 </div>
 
                 <button id="resetBtn" class="btn-reset hidden" onclick="location.reload()">NOUVELLE PARTIE</button>
             </div>
-
-            <div class="ad-mobile">
-                <ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-6856087924665425" data-ad-slot="3061830843"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </div>
-
         </main>
 
         <aside class="ad-sidebar right">
             <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6856087924665425" data-ad-slot="default" data-ad-format="auto"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </aside>
-
     </div>
-
     <script src="/socket.io/socket.io.js"></script>
     <script src="script.js"></script>
 </body>
