@@ -89,3 +89,37 @@ input {
     .game-area { order: 1; }
     h1 { font-size: 2rem; }
 }
+/* ... (Garder les variables précédentes) ... */
+
+.app-layout { display: flex; width: 100vw; height: 100vh; overflow: hidden; }
+
+/* PUBS LATÉRALES (PC) */
+.ad-sidebar {
+    width: 200px; height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* PUB MOBILE (BAS) */
+.ad-mobile-bottom {
+    display: none; /* Caché par défaut */
+    width: 320px; height: 50px;
+    margin-top: 15px; background: rgba(0,0,0,0.5);
+}
+
+/* NIVEAUX / XP */
+.rank-badge {
+    background: linear-gradient(90deg, #ffd700, #ff8c00);
+    color: black; padding: 5px 15px; border-radius: 20px;
+    font-size: 0.8rem; font-weight: 900; margin-top: 5px;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 1000px) {
+    .ad-sidebar { display: none; } /* On enlève les pubs de côté */
+    .ad-mobile-bottom { display: block; } /* On affiche la pub en bas */
+    .game-container { padding: 10px; }
+    h1 { font-size: 1.8rem; }
+    #grid { max-width: 300px; }
+}
