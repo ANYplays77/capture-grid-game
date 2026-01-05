@@ -9,32 +9,48 @@ const io = new Server(server);
 app.use(express.static(__dirname));
 
 io.on('connection', (socket) => {
-    // Rejoindre un salon
-    socket.on('joinRoom', (roomName) => {
+    console.log('Un joueur est connecté');
+
+    // ÉCOUTEUR DE CONNEXION AU SALON (Mise à jour importante)
+    socket.on('joinRoom', (data) => {
+        // data contient maintenant { room: "NomSalon", name: "Pseudo" }
+        const roomName = data.room; 
+        const playerName = data.name;
+
         const room = io.sockets.adapter.rooms.get(roomName);
         const numClients = room ? room.size : 0;
 
         if (numClients < 2) {
             socket.join(roomName);
+            console.log(`${playerName} a rejoint ${roomName}`);
+
+            // On envoie au joueur son numéro (1 ou 2)
             socket.emit('joined', { room: roomName, player: numClients + 1 });
-            if (numClients === 1) io.to(roomName).emit('startGame');
+
+            // Si c'est le 2ème joueur, on lance la partie pour tout le monde dans ce salon
+            if (numClients === 1) {
+                io.to(roomName).emit('startGame');
+            }
         } else {
+            // Salon plein
             socket.emit('full');
         }
     });
 
-    // Transmettre un coup
+    // GESTION DES MOUVEMENTS
     socket.on('makeMove', (data) => {
+        // On renvoie le mouvement à l'autre joueur du même salon
         socket.to(data.room).emit('moveMade', data);
     });
 
-    // Transmettre un message de chat
+    // GESTION DU CHAT
     socket.on('chatMessage', (data) => {
+        // On envoie le message à l'autre joueur
         socket.to(data.room).emit('receiveMessage', data);
     });
 
-    socket.on('gameOver', (data) => {
-        socket.to(data.room).emit('gameFinished', data);
+    socket.on('disconnect', () => {
+        console.log('Un joueur est parti');
     });
 });
 
